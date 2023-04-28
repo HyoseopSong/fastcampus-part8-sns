@@ -10,7 +10,7 @@ spring:
         database-platform:
             hibernate:
                 connection:
-                    url: MySQL5InnoDBDialect # ? 3? ???? ??? ?? ? ? ??? ?? 04.28
+                    url: MySQL8InnoDBDialect # ? 3? ???? ??? ?? ? ? ??? ?? 04.28
 spring.datasource:
 #    hikari.maxium-pool-size: 4
     url: jdbc:mysql://localhost:3306/fast_sns

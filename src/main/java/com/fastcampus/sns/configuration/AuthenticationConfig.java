@@ -28,10 +28,10 @@ public class AuthenticationConfig {
   @Bean
   public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
     return http
-            .authorizeHttpRequests()
-            .requestMatchers("/api/*/users/join", "/api/*/users/login").permitAll()
-            .requestMatchers("/api/**").authenticated()
-            .and()
+            .authorizeHttpRequests(auth -> auth
+                    .requestMatchers("/api/*/users/join", "/api/*/users/login").permitAll()
+                    .requestMatchers("/api/**").authenticated()
+            )
             .sessionManagement()
             .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
             .and()
