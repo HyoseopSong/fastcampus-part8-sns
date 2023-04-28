@@ -7,7 +7,7 @@ spring.jpa:
     show-sql: true
 spring:
     jpa:
-        database-platform=org:
+        database-platform:
             hibernate:
                 connection:
                     url: MySQL5InnoDBDialect # ? 3? ???? ??? ?? ? ? ??? ?? 04.28
