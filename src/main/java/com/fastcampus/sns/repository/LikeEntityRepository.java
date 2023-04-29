@@ -24,6 +24,8 @@ public interface LikeEntityRepository extends JpaRepository<LikeEntity, Integer>
 
   @Transactional
   @Modifying
-  @Query("UPDATE LikeEntity entity SET deleted_at = NOW() where entity.post = :post")
+  @Query(value = "UPDATE LikeEntity entity SET deleted_at = NOW() where entity.post = :post", nativeQuery = true)
   void deleteAllByPost(@Param("post") PostEntity postEntity);
+
+
 }
