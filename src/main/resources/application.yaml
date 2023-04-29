@@ -11,6 +11,9 @@ spring:
             hibernate:
                 connection:
                     url: MySQL8InnoDBDialect # ? 3? ???? ??? ?? ? ? ??? ?? 04.28
+    data:
+        redis:
+            url: redis://localhost:6379
 spring.datasource:
 #    hikari.maxium-pool-size: 4
     url: jdbc:mysql://localhost:3306/fast_sns
