@@ -1,19 +1,35 @@
-spring.jpa:
+spring:
+    jpa:
     defer-datasource-initialization: true
     hibernate.ddl-auto: update
     properties:
         hibernate.format_sql: true
 
     show-sql: true
-spring:
-    jpa:
-        database-platform:
-            hibernate:
-                connection:
-                    url: MySQL8InnoDBDialect # ? 3? ???? ??? ?? ? ? ??? ?? 04.28
+    database-platform:
+        hibernate:
+            connection:
+                url: MySQL8InnoDBDialect # ? 3? ???? ??? ?? ? ? ??? ?? 04.28
     data:
         redis:
             url: redis://localhost:6379
+    kafka:
+        bootstrap-servers: localhost:29092
+        consumer:
+            properties.spring.json.trusted.packages: "*"
+            group-id: notification
+            auto-offset-reset: latest
+            key-deserializer: org.apache.kafka.common.serialization.IntegerDeserializer
+            value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+        producer:
+            key-serializer: org.apache.kafka.common.serialization.IntegerSerializer
+            value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+        listener:
+            ack-mode: MANUAL
+        topic:
+            notification: notification
+
+
 spring.datasource:
 #    hikari.maxium-pool-size: 4
     url: jdbc:mysql://localhost:3306/fast_sns
@@ -29,3 +45,4 @@ jwt:
     secret-key: fast_campus.sns-application-2022.secret_key
     # 30 days
     token.expired-time-ms: 2592000000
+
