@@ -19,7 +19,7 @@ import java.util.List;
 //@Getter
 @AllArgsConstructor
 @NoArgsConstructor
-//@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class User implements UserDetails {
 
   private Integer id;
@@ -45,31 +45,31 @@ public class User implements UserDetails {
 
 
   @Override
-//  @JsonIgnore
+  @JsonIgnore
   public Collection<? extends GrantedAuthority> getAuthorities() {
     return List.of(new SimpleGrantedAuthority(this.getUserRole().toString()));
   }
 
   @Override
-//  @JsonIgnore
+  @JsonIgnore
   public boolean isAccountNonExpired() {
     return this.deletedAt == null;
   }
 
   @Override
-//  @JsonIgnore
+  @JsonIgnore
   public boolean isAccountNonLocked() {
     return this.deletedAt == null;
   }
 
   @Override
-//  @JsonIgnore
+  @JsonIgnore
   public boolean isCredentialsNonExpired() {
     return this.deletedAt == null;
   }
 
   @Override
-//  @JsonIgnore
+  @JsonIgnore
   public boolean isEnabled() {
     return this.deletedAt == null;
   }
